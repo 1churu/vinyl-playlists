@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+html, body { background: #080808; margin: 0; padding: 0; }
+
+@keyframes spin-vinyl { to { transform: rotate(360deg); } }
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse-text { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
+
+/* Smooth custom range slider */
+input[type="range"].vinyl-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+input[type="range"].vinyl-slider::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(to right, var(--vinyl-accent, #888) 0%, var(--vinyl-accent, #888) var(--vinyl-pct, 50%), #2a2a2a var(--vinyl-pct, 50%), #2a2a2a 100%);
+  border-radius: 1px;
+  transition: background 0.15s ease;
+}
+input[type="range"].vinyl-slider::-moz-range-track {
+  height: 2px;
+  background: #2a2a2a;
+  border-radius: 1px;
+}
+input[type="range"].vinyl-slider::-moz-range-progress {
+  height: 2px;
+  background: var(--vinyl-accent, #888);
+  border-radius: 1px;
+}
+input[type="range"].vinyl-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--vinyl-accent, #e8e8e8);
+  border: 2px solid #080808;
+  box-shadow: 0 0 0 1px #2a2a2a, 0 2px 6px rgba(0,0,0,0.6);
+  cursor: grab;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+input[type="range"].vinyl-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+input[type="range"].vinyl-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 1px var(--vinyl-accent, #888), 0 2px 10px rgba(0,0,0,0.8);
+}
+input[type="range"].vinyl-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--vinyl-accent, #e8e8e8);
+  border: 2px solid #080808;
+  box-shadow: 0 0 0 1px #2a2a2a, 0 2px 6px rgba(0,0,0,0.6);
+  cursor: grab;
+}
